@@ -1,0 +1,354 @@
+/* style.css - Versão aprimorada com título colorido */
+
+/* ----- VARIÁVEIS DE TEMA ----- */
+:root {
+  --bg1: #000000;
+  --bg2: #1a001f;
+  --bg3: #2a0040;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --text-dark: #0f172a;
+  --text-light: #ffffff;
+  --text-muted: #475569;
+  --accent: #7f00ff;
+  --accent-hover: #b026ff;
+  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --shadow-card: 0 15px 40px rgba(0,0,0,0.15);
+  --font: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* ----- RESET ----- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ----- CORPO DO SITE ----- */
+body {
+  font-family: var(--font);
+  background: linear-gradient(270deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 600% 600%;
+  animation: gradientMove 10s ease infinite;
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+/* ANIMAÇÃO DO FUNDO */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ----- CONTAINER ----- */
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 24px auto;
+  padding: 0 16px 64px;
+}
+
+/* ----- CABEÇALHO ----- */
+header.site-header {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-light);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* MENU */
+.nav-menu {
+  display: flex;
+  gap: 10px;
+}
+.nav-menu a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-weight: 600;
+  background: rgba(255,255,255,0.1);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all .3s ease;
+}
+.nav-menu a:hover {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* ----- TÍTULOS DE SEÇÃO (colorido RGB) ----- */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 900  ;
+  text-align: center;
+  margin: 12px 0;
+  background: linear-gradient(90deg,
+    rgb(255,0,120),
+    rgb(0,180,255),
+    rgb(255,255,120),
+    rgb(180,0,255)
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbTitle 6s linear infinite;
+  text-shadow: 0 0 25px rgba(255,255,255,0.3);
+}
+
+@keyframes rgbTitle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.page-desc {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+
+/* ----- CARDS ----- */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px; /* aumentado o espaçamento entre cards */
+}
+
+.card-link {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-decoration: none;
+  color: var(--text-dark);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-link::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.6s;
+}
+.card-link:hover::before {
+  left: 100%;
+}
+.card-link:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #2c1255;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ----- BOTÕES ----- */
+.btn-area {
+  background: #3d0061; /* nova cor */
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  box-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 10px 6px;
+}
+.btn-area:hover {
+  background: #690083; /* cor ao passar o mouse */
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 77, 210, 0.6);
+}
+
+/* ----- VOLTAR LINK ----- */
+.voltar-area {
+  background: #690083;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.5);
+  transition: all .3s;
+}
+.voltar-area:hover {
+  background: #ff4dd2;
+  box-shadow: 0 0 20px rgba(255, 77, 210, 0.8);
+}
+
+/* ----- BLOCOS DE CONTEÚDO ----- */
+.content-block {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  animation: fadeIn 0.8s ease;
+  margin-bottom: 32px; /* 👈 espaçamento entre blocos adicionado */
+}
+
+.portugues-page .content-block,
+.ingles-page .content-block,
+.artes-page .content-block {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  animation: none;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.content-block h2 {
+  color: #3a0ca3;
+  margin-bottom: 10px;
+}
+.content-block p {
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.content-block .highlight-text {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  color: var(--text-dark);
+  margin: 16px 0 0 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+
+.content-block .highlight-text h3 {
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.content-block .highlight-text ul {
+  margin: 0 0 16px 0;
+  padding-left: 20px;
+}
+
+.content-block .highlight-text li {
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.content-block .highlight-text p {
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* ----- RODAPÉ ----- */
+footer.site-footer {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  opacity: 0.9;
+  padding: 32px 16px;
+}
+
+/* ----- IOT PAGE STYLES ----- */
+.iot-page .content-block {
+  background: #ffffff;
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+.iot-page .content-block h2 {
+  color: #000000;
+}
+
+.iot-page .content-block p {
+  color: #000000;
+}
+
+/* ----- SOBRE PAGE STYLES ----- */
+.sobre-page .content-block {
+  background: #ffffff;
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+.sobre-page .content-block h2 {
+  color: #000000;
+}
+
+.sobre-page .content-block p {
+  color: #000000;
+}
+
+/* ----- IMAGEM PRINCIPAL (ajustada para esquerda e redonda) ----- */
+img.main-image {
+  width: 200px;      /* tamanho */
+  height: 200px;     /* para manter formato circular */
+  border-radius: 50%; /* deixa redonda */
+  display: block;
+  margin: 0 0 0 -350px; /* move para a esquerda */
+  object-fit: cover;  /* garante corte proporcional */
+}
+
+/* ----- IMAGEM PARA PÁGINAS DE ARTES (quadrada) ----- */
+img.artes-image {
+  width: 250px;      /* tamanho aumentado */
+  height: 250px;     /* para manter formato quadrado */
+  border-radius: 0;  /* deixa quadrada */
+  display: block;
+  margin: 0 0 0 -350px; /* move para a esquerda */
+  object-fit: cover;  /* garante corte proporcional */
+}
+/* ----- IMAGEM NO CONTEÚDO ----- */
+img.content-image {
+  width: 48%;        /* ocupa quase metade da largura */
+  max-width: 400px;  /* tamanho máximo aumentado */
+  height: auto;      /* mantém proporção */
+  border-radius: var(--radius-sm); /* bordas arredondadas */
+  display: inline-block; /* lado a lado */
+  margin: 0 1% 16px 0; /* margem lateral pequena */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra suave */
+}
